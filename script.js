@@ -85,13 +85,13 @@ fuelStatus.innerHTML = "Cargo mass is light enough for launch.";
  
 
    
-   fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){ //Generating in Browser with link to launchcode page
+   fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){ 
     
-      response.json().then(function(json){         //But not recognizing the objects. 
+      response.json().then(function(json){         
          let index = Math.floor(Math.random()*(json.length)); 
-         const missionTarget = document.getElementById("missionTarget"); //not generating with link to file in folder at all. 
-          //unsure how to handle picking destination array results 
-         missionTarget.innerHTML +=  //Would like to implement the bonus mission       
+         const missionTarget = document.getElementById("missionTarget"); 
+          
+         missionTarget.innerHTML +=        
          `<h2>Mission Destination</h2> 
          <ol>
         <li>Name: ${json[index].name} </li> 
