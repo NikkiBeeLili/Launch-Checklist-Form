@@ -27,21 +27,23 @@ else if(!isNaN(pilot) || !isNaN(coPilot)  || isNaN(fuelLevel) ||  isNaN(cargoMas
    event.preventDefault(); 
   
 } 
-else if (fuelLevel < 10000) {
+else if (fuelLevel < 10000 && cargoMass < 1000) {
    faultyItems.style.visibility = "visible"; 
    pilotStatus.innerHTML = `Pilot ${pilot} is Ready.`; 
    coPilotStatus.innerHTML = `Co-Pilot ${coPilot} is Ready.`; 
    launchStatus.innerHTML = "Shuttle is not ready for launch.";
    launchStatus.style.color = "red"; 
    fuelStatus.innerHTML = "There is not enough fuel for the journey!";
+   cargoStatus.innerHTML = "Cargo mass is light enough for launch.";
       event.preventDefault(); 
    }
-   else if (cargoMass > 10000){
+   else if (fuelLevel > 1000 && cargoMass > 10000){
    faultyItems.style.visibility = "visible"; 
    pilotStatus.innerHTML = `Pilot ${pilot} is Ready.`; 
    coPilotStatus.innerHTML = `Co-Pilot ${coPilot} is Ready.`; 
    launchStatus.innerHTML = "Shuttle is not ready for launch.";
-   launchStatus.style.color = "red"; 
+   launchStatus.style.color = "red";
+   fuelStatus.innerHTML = "Fuel levels are sufficient for launch.";  
    cargoStatus.innerHTML = "There is too much mass for the shuttle to take off."
       event.preventDefault(); 
      
@@ -53,26 +55,32 @@ else if (fuelLevel < 10000) {
   
 
 
-   else if (fuelLevel < 10000 || cargoMass > 10000){
+   else if (fuelLevel < 10000 && cargoMass > 10000){
       faultyItems.style.visibility = "visible"; 
       pilotStatus.innerHTML = `Pilot ${pilot} is Ready.`; 
       coPilotStatus.innerHTML = `Co-Pilot ${coPilot} is Ready.`; 
       launchStatus.innerHTML = "Shuttle is not ready for launch.";
       launchStatus.style.color = "red"; 
+      fuelStatus.innerHTML = "There is not enough fuel for the journey!";
+      cargoStatus.innerHTML = "There is too much mass for the shuttle to take off."
       event.preventDefault();
 
    }
+
+   
          
   
 
- else {
+ else if (fuelLevel > 1000 && cargoMass < 1000){
  launchStatus.innerHTML = "Shuttle is ready for launch"; 
  faultyItems.style.visibility = "visible";
  pilotStatus.innerHTML = `Pilot ${pilot} is Ready.`; 
 coPilotStatus.innerHTML = `Co-Pilot ${coPilot} is Ready.`; 
  launchStatus.style.color = "green"; 
-fuelStatus.innerHTML = "Cargo mass is light enough for launch.";
- cargoStatus.innerHTML = "Fuel levels are sufficient for launch."; 
+fuelStatus.innerHTML = "Fuel levels are sufficient for launch."; 
+ cargoStatus.innerHTML = "Cargo mass is light enough for launch.";
+
+ 
   
 
  
